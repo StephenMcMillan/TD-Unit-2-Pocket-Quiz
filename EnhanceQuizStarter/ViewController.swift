@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     // Quiz Manager Instance
     var quizManager: QuizManager!
     
+    var soundManager: SoundManager!
+    
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!
@@ -37,10 +39,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         answerButtons = [answer1Button, answer2Button, answer3Button, answer4Button]
-    
-        loadGameStartSound()
-        playGameStartSound()
-        
+        soundManager = SoundManager()
+        soundManager.playGameStartSound()
         setupGame()
     }
     
@@ -55,16 +55,7 @@ class ViewController: UIViewController {
         
         displayQuestion()
     }
-    
-    func loadGameStartSound() {
-        let path = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        let soundUrl = URL(fileURLWithPath: path!)
-        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
-    }
-    
-    func playGameStartSound() {
-        AudioServicesPlaySystemSound(gameSound)
-    }
+
     
     func displayQuestion() {
         
@@ -184,8 +175,10 @@ class ViewController: UIViewController {
         
         if result.correct{
             applyStyling(.correct, toButton: buttonPressed)
+            soundManager.playCorrectAnswerSound()
         } else {
             applyStyling(.incorrect, toButton: buttonPressed)
+            soundManager.playIncorrectAnswerSound()
             
             // Alter the styling of the button which has the correct answer
             for button in answerButtons {

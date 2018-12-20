@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		698AFE9E21C900220056AAEA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698AFE9D21C900220056AAEA /* Question.swift */; };
 		698AFEA021C902950056AAEA /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698AFE9F21C902950056AAEA /* QuizManager.swift */; };
+		69CE473221CC25460019344F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CE473121CC25460019344F /* SoundManager.swift */; };
+		69CE473521CC264C0019344F /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CE473421CC264C0019344F /* Sounds.swift */; };
+		69CE473A21CC2B280019344F /* correctAnswer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 69CE473821CC2B280019344F /* correctAnswer.wav */; };
+		69CE473C21CC2BCE0019344F /* incorrectAnswer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 69CE473B21CC2BCE0019344F /* incorrectAnswer.wav */; };
 		972A72B12056F06C0059EF4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972A72B02056F06C0059EF4A /* AppDelegate.swift */; };
 		972A72B32056F06C0059EF4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972A72B22056F06C0059EF4A /* ViewController.swift */; };
 		972A72B62056F06C0059EF4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972A72B42056F06C0059EF4A /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 /* Begin PBXFileReference section */
 		698AFE9D21C900220056AAEA /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		698AFE9F21C902950056AAEA /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
+		69CE473121CC25460019344F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		69CE473421CC264C0019344F /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		69CE473821CC2B280019344F /* correctAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correctAnswer.wav; sourceTree = "<group>"; };
+		69CE473B21CC2BCE0019344F /* incorrectAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incorrectAnswer.wav; sourceTree = "<group>"; };
 		972A72AD2056F06C0059EF4A /* Pocket Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pocket Quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		972A72B02056F06C0059EF4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		972A72B22056F06C0059EF4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +49,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69CE473021CC24D00019344F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				698AFE9D21C900220056AAEA /* Question.swift */,
+				698AFE9F21C902950056AAEA /* QuizManager.swift */,
+				69CE473121CC25460019344F /* SoundManager.swift */,
+				69CE473421CC264C0019344F /* Sounds.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		69CE473621CC28100019344F /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				69CE473821CC2B280019344F /* correctAnswer.wav */,
+				69CE473B21CC2BCE0019344F /* incorrectAnswer.wav */,
+				972A72C22056F0E40059EF4A /* GameSound.wav */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		972A72A42056F06C0059EF4A = {
 			isa = PBXGroup;
 			children = (
@@ -62,13 +91,12 @@
 			children = (
 				972A72B02056F06C0059EF4A /* AppDelegate.swift */,
 				972A72B22056F06C0059EF4A /* ViewController.swift */,
+				69CE473021CC24D00019344F /* Model */,
+				69CE473621CC28100019344F /* Audio */,
 				972A72B42056F06C0059EF4A /* Main.storyboard */,
 				972A72B72056F06C0059EF4A /* Assets.xcassets */,
 				972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */,
 				972A72BC2056F06C0059EF4A /* Info.plist */,
-				972A72C22056F0E40059EF4A /* GameSound.wav */,
-				698AFE9D21C900220056AAEA /* Question.swift */,
-				698AFE9F21C902950056AAEA /* QuizManager.swift */,
 			);
 			path = EnhanceQuizStarter;
 			sourceTree = "<group>";
@@ -134,8 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				972A72C32056F0E40059EF4A /* GameSound.wav in Resources */,
+				69CE473A21CC2B280019344F /* correctAnswer.wav in Resources */,
 				972A72BB2056F06C0059EF4A /* LaunchScreen.storyboard in Resources */,
 				972A72B82056F06C0059EF4A /* Assets.xcassets in Resources */,
+				69CE473C21CC2BCE0019344F /* incorrectAnswer.wav in Resources */,
 				972A72B62056F06C0059EF4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +180,9 @@
 				698AFEA021C902950056AAEA /* QuizManager.swift in Sources */,
 				698AFE9E21C900220056AAEA /* Question.swift in Sources */,
 				972A72B32056F06C0059EF4A /* ViewController.swift in Sources */,
+				69CE473521CC264C0019344F /* Sounds.swift in Sources */,
 				972A72B12056F06C0059EF4A /* AppDelegate.swift in Sources */,
+				69CE473221CC25460019344F /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
