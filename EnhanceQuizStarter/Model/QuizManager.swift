@@ -42,18 +42,6 @@ class QuizManager {
     init(numberOfQuestions: Int) {
                 
         self.questionProvider = QuestionProvider()
-//        self.quizSet = []
-//
-//        guard (numberOfQuestions * 2) < questionProvider.generalKnowledgeQuestions.count else {
-//            quizSet = questionProvider.generalKnowledgeQuestions
-//            return
-//        }
-//
-//        let indexesRequired = (numberOfQuestions-1) * 2 // Indexes are always 1 less than count. Multiplied by 2 for less repeats.
-//
-//        for i in 0...numberOfQuestions-1 {
-//            quizSet.append(questionProvider.generalKnowledgeQuestions[i])
-//        }
         
         // Array 'prefix' method can be used to select x number of elements from the start of the array. This will work given that the questions are shuffled before using this method. Otherwise, the same questions will be returned each time and the last questions will always be forgotten if outside the number of questions required.
         

@@ -66,13 +66,31 @@ struct QuestionProvider {
                  answers: ["Kitty Hawk, N. C.", "The English Channel", "The Golden Gate Bridge", "Fargo, N. D."],
                  correctAnswer: "Kitty Hawk, N. C."),
         
-        Question(question: "Altitude in aviation in measured in?",
+        Question(question: "Altitude in aviation is measured in?",
                  answers: ["Feet", "Metres", "Kilometres", "Decimetres"],
                  correctAnswer: "Feet"),
         
         Question(question: "What is the ICAO code for London Heathrow airport?",
                  answers: ["EGKK", "EGCC", "EGAA", "EGLL"],
-                 correctAnswer: "EGLL")].shuffled()
+                 correctAnswer: "EGLL"),
+        
+        Question(question: "Which of these airlines is the largest?", answers: ["Southwest", "Lufthansa"], correctAnswer: "Lufthansa"),
+        
+        Question(question: "What is the ICAO code for Dubai airport?",
+                 answers: ["KJFK", "EGLL", "OMDB", "CYYZ"],
+                 correctAnswer: "OMDB"),
+        
+        Question(question: "What is speed in aviation measured in?",
+                 answers: ["MPH", "KM/H", "M/S", "Knots"],
+                 correctAnswer: "Knots"),
+        
+        Question(question: "Which of these airliners is the largest?",
+                 answers: ["Airbus A320", "Boeing 757", "Cessna 152", "Boeing 747"],
+                 correctAnswer: "Boeing 747"),
+        
+        Question(question: "How many engines does an A340 have in total?",
+                 answers: ["2", "4"],
+                 correctAnswer: "4")].shuffled()
 }
 
 

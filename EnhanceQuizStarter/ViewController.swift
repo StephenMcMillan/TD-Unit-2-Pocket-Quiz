@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     var soundManager: SoundManager!
     
     // MARK: - Outlets
-    
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answer1Button: UIButton!
     @IBOutlet weak var answer2Button: UIButton!
@@ -33,7 +32,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var quizActionButton: UIButton!
     @IBOutlet weak var celebrationLabel: UILabel!
     
+    @IBOutlet weak var lightningModeLabel: UILabel!
+    @IBOutlet weak var lightningModeCountdownLabel: UILabel!
+    var lightningModeTimer: Timer?
+    var timerCount: Int = 15
+    
     var answerButtons: [UIButton]!
+    
+    // Enable / Disable lightning mode (This would be changed from a settings screen or main menu but for this example project it's hard-coded.
+    let lightningModeEnabled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,16 +54,24 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
     func setupGame() {
-        quizManager = QuizManager(numberOfQuestions: 200)
+
+        quizManager = QuizManager(numberOfQuestions: 5)
         questionsPerRound = quizManager.quizSet.count
         
         hideButtons(false)
         celebrationLabel.isHidden = true
         
+        if lightningModeEnabled {
+            lightningModeLabel.isHidden = false
+            lightningModeCountdownLabel.isHidden = false
+        } else {
+            lightningModeLabel.isHidden = true
+            lightningModeCountdownLabel.isHidden = true
+        }
+    
         displayQuestion()
     }
 
-    
     func displayQuestion() {
         
         self.resetButtonStyling()
@@ -72,7 +87,7 @@ class ViewController: UIViewController {
         }
         
         questionField.text = newQuestion.question
-
+        
         // Set-up answer buttons
         for (index, answer) in newQuestion.answers.shuffled().enumerated() {
             switch index {
@@ -104,11 +119,15 @@ class ViewController: UIViewController {
         }
         
         quizActionButton.isHidden = true
+        
+        if lightningModeEnabled { startLightningTimer() }
+        
     }
     
     func displayScore(score: Int) {
         // Hide the answer buttons
         hideButtons(true)
+        lightningModeCountdownLabel.isHidden = true
 
         // Display play again button
         quizActionButton.isHidden = false
@@ -132,6 +151,27 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             self.displayQuestion()
         }
+    }
+    
+    func startLightningTimer() {
+        
+        lightningModeTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+            self.timerCount -= 1
+            
+            if self.timerCount == 0 {
+                // Next question. Out of time.
+                
+                timer.invalidate()
+                self.lightningModeTimer = nil
+                
+                self.displayQuestion()
+            }
+            
+            self.lightningModeCountdownLabel.text = "\(self.timerCount)s remaining"
+        })
+        
+        timerCount = 16
+        lightningModeTimer?.fire()
     }
     
     // MARK: Button Styling Helpers
@@ -167,6 +207,9 @@ class ViewController: UIViewController {
     
     @IBAction func answerSelected(_ sender: Any) {
         
+        lightningModeTimer?.invalidate()
+        lightningModeTimer = nil
+        
         guard let buttonPressed = sender as? UIButton else { return }
         
         guard let answerFromButton = buttonPressed.currentTitle else { return }
@@ -195,6 +238,5 @@ class ViewController: UIViewController {
     @IBAction func playAgainButton(_ sender: Any) {
         setupGame()
     }
-    
 }
 
