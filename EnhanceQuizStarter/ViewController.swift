@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     var answerButtons: [UIButton]!
     
     // Enable / Disable lightning mode (This would be changed from a settings screen or main menu but for this example project it's hard-coded.
-    let lightningModeEnabled = false
+    let lightningModeEnabled = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
