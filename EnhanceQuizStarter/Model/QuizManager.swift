@@ -31,8 +31,6 @@ import Foundation
 */
 class QuizManager {
     
-    let questionProvider: QuestionProvider
-    
     // Start this at -1 so that the first call of getQuestion() will return the first item in the quiz set @ index 0
     var currentQuestionIndex: Int = -1
     var numberOfCorrectAnswers: Int = 0
@@ -40,14 +38,12 @@ class QuizManager {
     var quizSet: ArraySlice<Question>
     /// Initialises a new Quiz Manager with x amount of questions. If the number passed in exceeds the maximum number of questions available then all questions will be returned.
     init(numberOfQuestions: Int) {
-                
-        self.questionProvider = QuestionProvider()
-        
+                        
         // Array 'prefix' method can be used to select x number of elements from the start of the array. This will work given that the questions are shuffled before using this method. Otherwise, the same questions will be returned each time and the last questions will always be forgotten if outside the number of questions required.
         
         // 'prefix' returns an 'Array Slice' which doesn't allocate new memory and instead gives a view into the array. This would be beneficial for performance in this case if there was a large amount of quiz questions?
         
-        self.quizSet = questionProvider.aviationQuestions.prefix(numberOfQuestions)
+        self.quizSet = QuestionProvider.aviationQuestions.prefix(numberOfQuestions)
     }
     
     /// Returns the current question based on the currentQuestionIndex

@@ -7,17 +7,10 @@
 //
 
 import UIKit
-import GameKit
-import AudioToolbox
 
 class ViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var questionsPerRound: Int = 0
-    
-    var gameSound: SystemSoundID = 0
-    
     // Quiz Manager Instance
     var quizManager: QuizManager!
     
@@ -56,7 +49,6 @@ class ViewController: UIViewController {
     func setupGame() {
 
         quizManager = QuizManager(numberOfQuestions: 5)
-        questionsPerRound = quizManager.quizSet.count
         
         hideButtons(false)
         celebrationLabel.isHidden = true
@@ -92,13 +84,13 @@ class ViewController: UIViewController {
         for (index, answer) in newQuestion.answers.shuffled().enumerated() {
             switch index {
             case 0:
-                answer1Button.setTitle(answer, for: UIControl.State.normal)
+                answer1Button.setTitle(answer, for: .normal)
             case 1:
-                answer2Button.setTitle(answer, for: UIControl.State.normal)
+                answer2Button.setTitle(answer, for: .normal)
             case 2:
-                answer3Button.setTitle(answer, for: UIControl.State.normal)
+                answer3Button.setTitle(answer, for: .normal)
             case 3:
-                answer4Button.setTitle(answer, for: UIControl.State.normal)
+                answer4Button.setTitle(answer, for: .normal)
             default:
                 break
             }
@@ -134,10 +126,10 @@ class ViewController: UIViewController {
         celebrationLabel.isHidden = false
 
         // Change the end-game message depending on how well the player does.
-        if score > questionsPerRound/2 {
-            questionField.text = "Way to go!\nYou got \(score) out of \(questionsPerRound) correct!"
+        if score > quizManager.quizSet.count {
+            questionField.text = "Way to go!\nYou got \(score) out of \(quizManager.quizSet.count) correct!"
         } else {
-            questionField.text = "You got \(score) out of \(questionsPerRound) correct! Better luck next time."
+            questionField.text = "You got \(score) out of \(quizManager.quizSet.count) correct! Better luck next time."
         }
     }
     

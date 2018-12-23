@@ -16,7 +16,7 @@ struct Question {
 }
 
 struct QuestionProvider {
-    let generalKnowledgeQuestions = [
+    static let generalKnowledgeQuestions = [
         Question(question: "This was the only US President to serve more than two consecutive terms.",
                  answers: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson", "Andrew Jackson"],
                  correctAnswer: "Franklin D. Roosevelt"),
@@ -57,7 +57,7 @@ struct QuestionProvider {
                  answers: ["France", "Germany", "Japan", "Great Britian"],
                  correctAnswer: "Great Britian")].shuffled() // Shuffle the array every time it is created for randomness.
     
-    let aviationQuestions = [
+    static let aviationQuestions = [
         Question(question: "What are the four forces of flight?",
                  answers: ["Air law, trust, drag, heavy", "Crew, aircraft, luggage, passengers", "Lift, thrust, drag, weight"],
                  correctAnswer: "Lift, thrust, drag, weight"),
